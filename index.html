@@ -1,37 +1,63 @@
-<html><head>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
-    <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="https://s3-eu-west-1.amazonaws.com/apps.playcanvas.com/DLgXf1zr/styles.css">
-    <link rel="manifest" href="https://s3-eu-west-1.amazonaws.com/apps.playcanvas.com/DLgXf1zr/manifest.json">
-    <style>@media screen and (min-aspect-ratio: 1280/720) {    #application-canvas.fill-mode-KEEP_ASPECT {        width: auto;        height: 100%;        margin: 0 auto;    }}</style>
-    <title>Flappy Bird</title>
-    <script src="https://s3-eu-west-1.amazonaws.com/apps.playcanvas.com/DLgXf1zr/playcanvas-stable.min.js"></script>
-    <script>
-        ASSET_PREFIX = "https://s3-eu-west-1.amazonaws.com/apps.playcanvas.com/DLgXf1zr/";
-        SCRIPT_PREFIX = "https://s3-eu-west-1.amazonaws.com/apps.playcanvas.com/DLgXf1zr/";
-        SCENE_PATH = "404993.json";
-        CONTEXT_OPTIONS = {
-            'antialias': true,
-            'alpha': false,
-            'preserveDrawingBuffer': false,
-            'preferWebGl2': true,
-            'powerPreference': "default"
-        };
-        SCRIPTS = [ 37175323, 21399876, 4554207, 4554213, 4554214, 4554217, 4554270, 4554271, 4554273, 4554276, 4554279, 20754603, 20755574, 37175329, 37186400 ];
-        CONFIG_FILENAME = "https://s3-eu-west-1.amazonaws.com/apps.playcanvas.com/DLgXf1zr/config.json";
-        INPUT_SETTINGS = {
-            useKeyboard: true,
-            useMouse: true,
-            useGamepads: false,
-            useTouch: true
-        };
-        pc.script.legacy = false;
-        PRELOAD_MODULES = [
-        ];
-    </script>
-<style type="text/css">body {
-    background-color: #283538;
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="https://s3-eu-west-1.amazonaws.com/apps.playcanvas.com/DLgXf1zr/styles.css">
+<link rel="manifest" href="https://s3-eu-west-1.amazonaws.com/apps.playcanvas.com/DLgXf1zr/manifest.json">
+<title>Flappy Bird</title>
+
+<style>
+body {
+    background-color: #0e1113;
+    margin: 0;
+    overflow: hidden;
+    font-family: "Poppins", sans-serif;
 }
+
+/* Cosmic Studios Intro */
+#cosmic-intro {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at center, #0d1b22 0%, #000 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    flex-direction: column;
+    color: white;
+    font-family: "Orbitron", sans-serif;
+    text-align: center;
+    animation: fadeOut 1s ease forwards;
+    animation-delay: 3s;
+}
+
+#cosmic-intro h1 {
+    font-size: 3em;
+    letter-spacing: 4px;
+    text-shadow: 0 0 20px #00ffff, 0 0 40px #0088ff, 0 0 60px #00ccff;
+    animation: glow 2.5s ease-in-out infinite alternate;
+}
+
+#cosmic-intro p {
+    font-size: 1.1em;
+    color: #bbb;
+    margin-top: 10px;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 10px #00ffff, 0 0 20px #00aaff; }
+    to { text-shadow: 0 0 30px #00ffff, 0 0 60px #00ccff; }
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+/* Original Game Styles */
 #application-splash-wrapper {
     position: absolute;
     top: 0;
@@ -65,10 +91,52 @@
         width: 170px;
         left: calc(50% - 85px);
     }
-}</style><script src="https://s3-eu-west-1.amazonaws.com/apps.playcanvas.com/DLgXf1zr/__game-scripts.js"></script></head>
+}
+</style>
+
+<script src="https://s3-eu-west-1.amazonaws.com/apps.playcanvas.com/DLgXf1zr/playcanvas-stable.min.js"></script>
+<script>
+    ASSET_PREFIX = "https://s3-eu-west-1.amazonaws.com/apps.playcanvas.com/DLgXf1zr/";
+    SCRIPT_PREFIX = "https://s3-eu-west-1.amazonaws.com/apps.playcanvas.com/DLgXf1zr/";
+    SCENE_PATH = "404993.json";
+    CONTEXT_OPTIONS = {
+        'antialias': true,
+        'alpha': false,
+        'preserveDrawingBuffer': false,
+        'preferWebGl2': true,
+        'powerPreference': "default"
+    };
+    SCRIPTS = [ 37175323, 21399876, 4554207, 4554213, 4554214, 4554217, 4554270, 4554271, 4554273, 4554276, 4554279, 20754603, 20755574, 37175329, 37186400 ];
+    CONFIG_FILENAME = "https://s3-eu-west-1.amazonaws.com/apps.playcanvas.com/DLgXf1zr/config.json";
+    INPUT_SETTINGS = {
+        useKeyboard: true,
+        useMouse: true,
+        useGamepads: false,
+        useTouch: true
+    };
+    pc.script.legacy = false;
+    PRELOAD_MODULES = [];
+</script>
+<script src="https://s3-eu-west-1.amazonaws.com/apps.playcanvas.com/DLgXf1zr/__game-scripts.js"></script>
+</head>
+
 <body>
-    <script src="https://s3-eu-west-1.amazonaws.com/apps.playcanvas.com/DLgXf1zr/__start__.js"></script><canvas id="application-canvas" tabindex="0" width="990" height="733" style="width: 990px; height: 733px;" class="fill-mode-FILL_WINDOW"></canvas>
+    <!-- Cosmic Studios Intro -->
+    <div id="cosmic-intro">
+        <h1>🌌 Cosmic Studios</h1>
+        <p>Loading your adventure...</p>
+    </div>
+
+    <!-- Game -->
+    <canvas id="application-canvas" tabindex="0" class="fill-mode-FILL_WINDOW"></canvas>
+    <script src="https://s3-eu-west-1.amazonaws.com/apps.playcanvas.com/DLgXf1zr/__start__.js"></script>
     <script src="https://s3-eu-west-1.amazonaws.com/apps.playcanvas.com/DLgXf1zr/__loading__.js"></script>
 
-
-</body></html>
+    <script>
+    // Hide intro after 3 seconds
+    setTimeout(() => {
+        document.getElementById('cosmic-intro').style.display = 'none';
+    }, 3500);
+    </script>
+</body>
+</html>
